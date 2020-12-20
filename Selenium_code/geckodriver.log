@@ -1,0 +1,22 @@
+1608392111762	geckodriver	INFO	Listening on 127.0.0.1:50371
+1608392114782	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\USER\\AppData\\Local\\Temp\\rust_mozprofileSesris"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1608392119065	Marionette	INFO	Listening on port 50379
+1608392119283	Marionette	WARN	TLS certificate errors will be ignored for this session
+1608392129166	Marionette	INFO	Stopped listening on port 50379
+[Parent 7628, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:166
+[Parent 7628, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:166
+1608392191834	geckodriver	INFO	Listening on 127.0.0.1:50429
+1608392194861	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\USER\\AppData\\Local\\Temp\\rust_mozprofileHDxE0d"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608392198133	Marionette	INFO	Listening on port 50437
+1608392198218	Marionette	WARN	TLS certificate errors will be ignored for this session
+1608392289429	geckodriver	INFO	Listening on 127.0.0.1:50487
+1608392292456	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\USER\\AppData\\Local\\Temp\\rust_mozprofileYpVpQc"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608392295252	Marionette	INFO	Listening on port 50495
+1608392295763	Marionette	WARN	TLS certificate errors will be ignored for this session
+1608392305272	Marionette	INFO	Stopped listening on port 50495
