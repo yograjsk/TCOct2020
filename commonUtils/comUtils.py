@@ -43,8 +43,13 @@ class commonUtilities():
         return driver.find_element(identifierTuple[0], identifierTuple[1]).is_displayed()
 
     def getDriver(self, browserName):
-        if browserName in ('chrome', 'Chrome', "CHROME"):
-            return webdriver.Chrome(executable_path='../drivers/chromedriver.exe')
+        if browserName.lower() in ('chrome', "chromeheadless"):
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--start-maximize")
+            chrome_options.add_argument("--window-size=1920,1024")
+            if  ('chromeheadless') in ("".lower()):
+                chrome_options.add_argument("--headless")
+            return webdriver.Chrome(chrome_options=chrome_options, executable_path='../drivers/chromedriver.exe')
         elif browserName in ('firefox', 'ff', 'FireFox'):
             return webdriver.Firefox(executable_path='../drivers/geckodriver.exe')
         else:
