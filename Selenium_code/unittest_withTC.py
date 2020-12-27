@@ -61,17 +61,17 @@ class unittest_example(unittest.TestCase):
         print("setDownClass method - quiting driver instance")
         self.driver.quit()
 
-    def test_addUser(self):
-        self.cu.menuNav(self.driver, "Admin", "User Management", "Users")
-        self.cu.clickElement(self.driver, self.OR.addUserBtn)
-        self.cu.sendKeysToElement(self.driver, self.OR.employeeNameTxt, "Orange Test")
-        self.cu.sendKeysToElement(self.driver, self.OR.usernameTxt, "OrangeTest")
-        self.cu.sendKeysToElement(self.driver, self.OR.passwordTxt, "admin123")
-        self.cu.sendKeysToElement(self.driver, self.OR.confirmPasswordTxt, "admin123")
-        self.cu.clickElement(self.driver, self.OR.saveBtn)
-        print("checking username field",self.cu.checkElementPresent(self.driver, (By.ID, "searchSystemUser_userName")))
-        self.cu.sendKeysToElement(self.driver, self.OR.searchUserTxt, "OrangeTest")
-        self.cu.clickElement(self.driver, self.OR.searchBtn)
+    # def test_addUser(self):
+    #     self.cu.menuNav(self.driver, "Admin", "User Management", "Users")
+    #     self.cu.clickElement(self.driver, self.OR.addUserBtn)
+    #     self.cu.sendKeysToElement(self.driver, self.OR.employeeNameTxt, "Orange Test")
+    #     self.cu.sendKeysToElement(self.driver, self.OR.usernameTxt, "OrangeTest")
+    #     self.cu.sendKeysToElement(self.driver, self.OR.passwordTxt, "admin123")
+    #     self.cu.sendKeysToElement(self.driver, self.OR.confirmPasswordTxt, "admin123")
+    #     self.cu.clickElement(self.driver, self.OR.saveBtn)
+    #     print("checking username field",self.cu.checkElementPresent(self.driver, (By.ID, "searchSystemUser_userName")))
+    #     self.cu.sendKeysToElement(self.driver, self.OR.searchUserTxt, "OrangeTest")
+    #     self.cu.clickElement(self.driver, self.OR.searchBtn)
 
 
     def test_rightClick(self):
