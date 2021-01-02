@@ -5,51 +5,60 @@ from selenium.webdriver.common.by import By
 
 class commonUtilities():
 
-    # def clickElement(self, driver, byType, byValue):
-    #     driver.find_element(byType, byValue).click()
+    props = {}
 
     def clickElement(self, driver, locatorTuple):
         driver.find_element(locatorTuple[0], locatorTuple[1]).click()
 
-    # def sendKeysToElement(self, driver, byType, byValue, textToPass):
-    #     driver.find_element(byType, byValue).send_keys(textToPass)
+    def getText(self, driver, locatorTuple):
+        return driver.find_element(locatorTuple[0], locatorTuple[1]).text
 
-    def sendKeysToElement(self, driver, identifierTpl, textToPass):
-        driver.find_element(identifierTpl[0], identifierTpl[1]).send_keys(textToPass)
+    def selectCheckbox(self, driver, locatorTuple):
+        if not self.getElement(driver, locatorTuple).is_selected():
+            self.clickElement(driver, locatorTuple)
+
+    def deselectCheckbox(self, driver, locatorTuple):
+        if self.getElement(driver, locatorTuple).is_selected():
+            self.clickElement(driver, locatorTuple)
+
+    def sendKeysToElement(self, driver, locatorTuple, textToPass):
+        driver.find_element(locatorTuple[0], locatorTuple[1]).send_keys(textToPass)
 
     def sendKeysToElementByAction(self, driver, identifierTpl, textToPass):
         action = ActionChains(driver)
         element = driver.find_element(identifierTpl[0], identifierTpl[1])
         action.send_keys_to_element(element, textToPass)
         action.perform()
-        # driver.find_element(identifierTpl[0], identifierTpl[1]).send_keys(textToPass)
 
-    def rightClickOnElement(self, driver, identifierTpl):
+    def rightClickOnElement(self, driver, locatorTuple):
         action = ActionChains(driver)
-        element = driver.find_element(identifierTpl[0], identifierTpl[1])
+        element = driver.find_element(locatorTuple[0], locatorTuple[1])
         action.context_click(element)
         action.perform()
 
-    def doubleClickOnElement(self, driver, identifierTpl):
+    def doubleClickOnElement(self, driver, locatorTuple):
         action = ActionChains(driver)
-        element = driver.find_element(identifierTpl[0], identifierTpl[1])
+        element = driver.find_element(locatorTuple[0], locatorTuple[1])
         action.double_click(element)
         action.perform()
 
-    def getElement(self, driver, identifierTpl):
-        return driver.find_element(identifierTpl[0], identifierTpl[1])
+    def getElement(self, driver, locatorTuple):
+        return driver.find_element(locatorTuple[0], locatorTuple[1])
 
-    def checkElementPresent(self, driver, identifierTuple):
-        return driver.find_element(identifierTuple[0], identifierTuple[1]).is_displayed()
+    def checkElementPresent(self, driver, locatorTuple):
+        return driver.find_element(locatorTuple[0], locatorTuple[1]).is_displayed()
 
-    def getDriver(self, browserName):
+    def getDriver(self, properties):
+        browserName = properties['browser']
+        headless = properties['headless']
         if browserName.lower() in ('chrome', "chromeheadless"):
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument("--start-maximize")
-            chrome_options.add_argument("--window-size=1920,1024")
-            if  ('chromeheadless') in ("".lower()):
+            # chrome_options.add_argument("--window-size=1920,1024")
+            if  headless.lower() == "true":
                 chrome_options.add_argument("--headless")
-            return webdriver.Chrome(chrome_options=chrome_options, executable_path='../drivers/chromedriver.exe')
+            # return webdriver.Chrome(chrome_options=chrome_options, executable_path='../drivers/chromedriver.exe')
+            return webdriver.Chrome(chrome_options=chrome_options, executable_path='drivers/chromedriver.exe')
         elif browserName in ('firefox', 'ff', 'FireFox'):
             return webdriver.Firefox(executable_path='../drivers/geckodriver.exe')
         else:
@@ -73,15 +82,13 @@ class commonUtilities():
     def readPropertyFile(self, filePath):
         data = open(filePath, 'r')
         prop = dict(i.strip().split("=") for i in data)
-        print(prop)
         return prop
 
-    def readPropFile(self, filePath):
-        fileData = list(open(filePath, 'r'))
-        props = dict(p.strip().split('=') for p in fileData)
-        return props
+    def setProperties(self, properties):
+        self.props = properties
 
-
+    def getProperties(self):
+        return self.props
 
 
 

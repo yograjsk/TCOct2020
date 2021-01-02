@@ -29,3 +29,7 @@ class funcUtils(commonUtilities, objRepo):
         lnkLogout = self.driver.find_element_by_link_text("Logout")
         lnkLogout.click()
 
+    def searchUserByUsername(self, username, driver):
+        self.cu.menuNav(driver, "Admin", "User Management", "Users")
+        self.cu.sendKeysToElement(driver, self.OR.searchUserTxt, username)
+        self.cu.clickElement(driver, self.OR.searchBtn)

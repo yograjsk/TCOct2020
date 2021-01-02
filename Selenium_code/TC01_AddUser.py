@@ -17,24 +17,26 @@ class TC01_AddUser(unittest.TestCase):
         cls.login = Login()
         cls.logout = Logout()
         cls.driver = cls.login.login("user", "password123")
+        cls.properties = cls.cu.readPropertyFile("config.properties")
 
-    def getDriver(self):
-        return self.driver
-
-    def setDriver(self, driver):
-        self.driver = driver
+    # def getDriver(self):
+    #     return self.driver
+    #
+    # def setDriver(self, driver):
+    #     self.driver = driver
 
     def test_addUser(self):
+        username = self.properties['user']
         self.cu.menuNav(self.driver, "Admin", "User Management", "Users")
         self.cu.clickElement(self.driver, self.OR.addUserBtn)
         self.cu.sendKeysToElement(self.driver, self.OR.employeeNameTxt, "testAdminAuto1 m last")
-        self.cu.sendKeysToElement(self.driver, self.OR.usernameTxt, "OrangeTest")
+        self.cu.sendKeysToElement(self.driver, self.OR.usernameTxt, username)
         self.cu.sendKeysToElement(self.driver, self.OR.passwordTxt, "admin123")
         self.cu.sendKeysToElement(self.driver, self.OR.confirmPasswordTxt, "admin123")
-        # self.cu.clickElement(self.driver, self.OR.saveBtn)
-        self.cu.clickElementByAction(self.driver, self.OR.saveBtn)
+        self.cu.clickElement(self.driver, self.OR.saveBtn)
+        # self.cu.clickElementByAction(self.driver, self.OR.saveBtn)
         print("checking username field",self.cu.checkElementPresent(self.driver, (By.ID, "searchSystemUser_userName")))
-        self.cu.sendKeysToElement(self.driver, self.OR.searchUserTxt, "OrangeTest")
+        self.cu.sendKeysToElement(self.driver, self.OR.searchUserTxt, username)
         self.cu.clickElement(self.driver, self.OR.searchBtn)
 
     @classmethod

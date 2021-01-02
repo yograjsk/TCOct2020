@@ -14,6 +14,10 @@ class objRepo:
     saveBtn = (By.NAME, "btnSave")
     searchUserTxt = (By.ID, "searchSystemUser_userName")
     searchBtn = (By.ID, "searchBtn")
+    deleteBtn = (By.ID, "btnDelete")
+    alertOK = (By.ID, "dialogDeleteBtn")
+    alertCancel = (By.XPATH, "//input[@value='Cancel']")
+
 
 
     class welcomePage:
