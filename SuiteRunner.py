@@ -15,8 +15,9 @@ tc4 = unittest.TestLoader().loadTestsFromModule(TC04_DownloadUploadCases)
 
 # Create test suites
 smokeTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
-regressionTestSuite = unittest.TestSuite([tc1, tc4])
+regressionTestSuite = unittest.TestSuite([tc3])
 functionalTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
+integrationTestSuite = unittest.TestSuite([tc1, tc2, tc4])
 
 cu = commonUtilities()
 properties = cu.readPropertyFile("Selenium_code/config.properties")
@@ -24,10 +25,20 @@ suiteName = properties['testSuite']
 
 # test_runner = HtmlTestRunner.HTMLTestRunner(output="Reports/HTMLReports", verbosity=2, report_name="SMOKE TEST REPORT", report_title=f"{suiteName} Test Report")
 
-if suiteName.lower() == "smoke":
-    print("running smoke suite")
+if suiteName.lower() == "integration":
+    unittest.TextTestRunner().run(integrationTestSuite)
+elif suiteName.lower() == "smoke":
     unittest.TextTestRunner().run(smokeTestSuite)
-    # test_runner.run(smokeTestSuite)
+elif suiteName.lower() == "functional":
+    unittest.TextTestRunner().run(functionalTestSuite)
+elif suiteName.lower() == "regression":
+    unittest.TextTestRunner().run(regressionTestSuite)
+
+
+# if suiteName.lower() == "smoke":
+#     print("running smoke suite")
+#     unittest.TextTestRunner().run(smokeTestSuite)
+#     # test_runner.run(smokeTestSuite)
 
 unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="Reports/HTMLReports", verbosity=3, combine_reports=True))
 
