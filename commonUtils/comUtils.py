@@ -55,12 +55,12 @@ class commonUtilities():
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument("--start-maximize")
             # chrome_options.add_argument("--window-size=1920,1024")
-            if  headless.lower() == "true":
+            if headless.lower() == "true":
                 chrome_options.add_argument("--headless")
             # return webdriver.Chrome(chrome_options=chrome_options, executable_path='../drivers/chromedriver.exe')
             return webdriver.Chrome(chrome_options=chrome_options, executable_path='drivers/chromedriver.exe')
         elif browserName in ('firefox', 'ff', 'FireFox'):
-            return webdriver.Firefox(executable_path='../drivers/geckodriver.exe')
+            return webdriver.Firefox(executable_path='./drivers/geckodriver.exe')
         else:
             raise Exception("Invalid browser value passed")
 
@@ -80,6 +80,7 @@ class commonUtilities():
         action.perform()
 
     def readPropertyFile(self, filePath):
+        print("prop file path:", filePath)
         data = open(filePath, 'r')
         prop = dict(i.strip().split("=") for i in data)
         return prop

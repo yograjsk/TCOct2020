@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from commonUtils.comUtils import commonUtilities
 from objectRepo.objRepo import objRepo
+from commonUtils.Constants import Constants
 
 
 class Login():
@@ -9,7 +10,9 @@ class Login():
     def login(self, username, password):
         cu = commonUtilities()
         OR = objRepo()
-        properties = cu.readPropertyFile("config.properties")
+        const = Constants()
+        properties = cu.readPropertyFile(const.propFilePath)
+        # properties = cu.readPropertyFile("config.properties")
         # self.driver = cu.getDriver(properties['browser'])
         self.driver = cu.getDriver(properties)
         self.driver.implicitly_wait(10)

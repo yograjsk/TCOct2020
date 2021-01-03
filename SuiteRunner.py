@@ -2,6 +2,7 @@ import unittest
 import HtmlTestRunner
 
 from commonUtils.comUtils import commonUtilities
+from commonUtils.Constants import Constants
 
 from Selenium_code.TC01_AddUser import TC01_AddUser
 from Selenium_code.TC02_DeleteUser import TC02_DeleteUser
@@ -20,9 +21,11 @@ functionalTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
 integrationTestSuite = unittest.TestSuite([tc1, tc2, tc4])
 
 cu = commonUtilities()
-properties = cu.readPropertyFile("Selenium_code/config.properties")
+const = Constants()
+properties = cu.readPropertyFile(const.propFilePath)
+# properties = cu.readPropertyFile("Selenium_code/config.properties")
 suiteName = properties['testSuite']
-
+print("Suite Name:", suiteName)
 # test_runner = HtmlTestRunner.HTMLTestRunner(output="Reports/HTMLReports", verbosity=2, report_name="SMOKE TEST REPORT", report_title=f"{suiteName} Test Report")
 
 if suiteName.lower() == "integration":

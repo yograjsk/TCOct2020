@@ -10,3 +10,4 @@ class Logout():
         lblWelcome.click()
         lnkLogout = driver.find_element_by_link_text("Logout")
         lnkLogout.click()
+        # driver.quit()

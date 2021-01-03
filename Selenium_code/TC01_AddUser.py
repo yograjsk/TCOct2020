@@ -1,11 +1,10 @@
 import unittest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from Selenium_code.Login import Login
 from Selenium_code.Logout import Logout
-from funcUtils.funcUtils import funcUtils
 from commonUtils.comUtils import commonUtilities
+from commonUtils.Constants import Constants
 from objectRepo.objRepo import objRepo
 
 class TC01_AddUser(unittest.TestCase):
@@ -14,16 +13,12 @@ class TC01_AddUser(unittest.TestCase):
     def setUpClass(cls):
         cls.cu = commonUtilities()
         cls.OR = objRepo()
+        const = Constants()
         cls.login = Login()
         cls.logout = Logout()
         cls.driver = cls.login.login("user", "password123")
-        cls.properties = cls.cu.readPropertyFile("config.properties")
-
-    # def getDriver(self):
-    #     return self.driver
-    #
-    # def setDriver(self, driver):
-    #     self.driver = driver
+        # cls.properties = cls.cu.readPropertyFile("config.properties")
+        cls.properties = cls.cu.readPropertyFile(const.propFilePath)
 
     def test_addUser(self):
         username = self.properties['user']
@@ -42,6 +37,7 @@ class TC01_AddUser(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.logout.logout(cls.driver)
+        cls.driver.quit()
 
 
 if __name__ == '__main__':

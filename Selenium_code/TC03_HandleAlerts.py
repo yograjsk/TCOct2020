@@ -1,11 +1,8 @@
 import unittest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from Selenium_code.Login import Login
-from Selenium_code.Logout import Logout
-from funcUtils.funcUtils import funcUtils
 from commonUtils.comUtils import commonUtilities
+from commonUtils.Constants import Constants
 from objectRepo.objRepo import objRepo
 
 class TC03_HandleAlerts(unittest.TestCase):
@@ -14,17 +11,10 @@ class TC03_HandleAlerts(unittest.TestCase):
     def setUpClass(cls):
         cls.cu = commonUtilities()
         cls.OR = objRepo()
-        # cls.login = Login()
-        # cls.logout = Logout()
-        # cls.driver = cls.login.login("user", "password123")
-        cls.properties = cls.cu.readPropertyFile("config.properties")
+        const = Constants()
+        cls.properties = cls.cu.readPropertyFile(const.propFilePath)
+        # cls.properties = cls.cu.readPropertyFile("config.properties")
         cls.driver = cls.cu.getDriver(cls.properties['browser'])
-
-    # def getDriver(self):
-    #     return self.driver
-    #
-    # def setDriver(self, driver):
-    #     self.driver = driver
 
     def test_TC1_handleSimpleAlert(self):
         self.driver.get("https://www.seleniumeasy.com/test/javascript-alert-box-demo.html")
