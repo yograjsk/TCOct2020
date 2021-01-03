@@ -14,7 +14,7 @@ class TC03_HandleAlerts(unittest.TestCase):
         const = Constants()
         cls.properties = cls.cu.readPropertyFile(const.propFilePath)
         # cls.properties = cls.cu.readPropertyFile("config.properties")
-        cls.driver = cls.cu.getDriver(cls.properties['browser'])
+        cls.driver = cls.cu.getDriver(cls.properties)
 
     def test_TC1_handleSimpleAlert(self):
         self.driver.get("https://www.seleniumeasy.com/test/javascript-alert-box-demo.html")
@@ -56,7 +56,7 @@ class TC03_HandleAlerts(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.driver.close()
+        cls.driver.quit()
         # cls.logout.logout(cls.driver)
 
 

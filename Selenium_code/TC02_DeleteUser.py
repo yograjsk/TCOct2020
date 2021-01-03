@@ -47,6 +47,7 @@ class TC02_DeleteUser(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.logout.logout(cls.driver)
+        cls.driver.quit()
 
 
 if __name__ == '__main__':

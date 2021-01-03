@@ -32,6 +32,7 @@ class TC04_DownloadUploadCases(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.logout.logout(cls.driver)
+        cls.driver.quit()
 
 
 if __name__ == '__main__':
