@@ -22,7 +22,8 @@ class TC03_HandleAlerts(unittest.TestCase):
         alertBox = self.driver.switch_to.alert
         print(alertBox.text)
         alertBox.accept()
-        self.driver.save_screenshot("evidences/HandleSimpleAlert")
+        # self.driver.save_screenshot("evidences/HandleSimpleAlert")
+        self.cu.takeScreenshot(self.driver, "HandleSimpleAlert.png")
 
     def test_TC2_handleConfirmationAlert(self):
         self.driver.get("https://www.seleniumeasy.com/test/javascript-alert-box-demo.html")
@@ -38,7 +39,8 @@ class TC03_HandleAlerts(unittest.TestCase):
         print(alert.text)
         alert.accept()
         print("what happened?", msgElement.text)
-        self.driver.save_screenshot("evidences/HandleConfirmaitonAlert")
+        # self.driver.save_screenshot("evidences/HandleConfirmaitonAlert")
+        self.cu.takeScreenshot(self.driver, "HandleConfirmationAlert.png")
 
     def test_TC3_handleInputPromptAlert(self):
         self.driver.get("https://www.seleniumeasy.com/test/javascript-alert-box-demo.html")
@@ -55,7 +57,8 @@ class TC03_HandleAlerts(unittest.TestCase):
         print(alert.text)
         alert.accept()
         print("what happened?", msgElement.text)
-        self.driver.save_screenshot("evidences/HandleInputPromptAlert")
+        self.cu.takeScreenshot(self.driver, "HandleInputPromptAlert.png")
+        # self.driver.save_screenshot("evidences/HandleInputPromptAlert")
 
     @classmethod
     def tearDownClass(cls):

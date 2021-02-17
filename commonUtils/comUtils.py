@@ -8,6 +8,9 @@ class commonUtilities():
 
     props = {}
 
+    def takeScreenshot(self, driver, fileName):
+        driver.save_screenshot(fileName)
+
     def clickElement(self, driver, locatorTuple):
         driver.find_element(locatorTuple[0], locatorTuple[1]).click()
 

@@ -11,19 +11,19 @@ from Selenium_code.TC04_DownloadUploadCases import TC04_DownloadUploadCases
 
 tc1 = unittest.TestLoader().loadTestsFromModule(TC01_AddLocation)
 tc2 = unittest.TestLoader().loadTestsFromModule(TC02_DeleteLocation)
-# tc3 = unittest.TestLoader().loadTestsFromModule(TC03_HandleAlerts)
-# tc4 = unittest.TestLoader().loadTestsFromModule(TC04_DownloadUploadCases)
+tc3 = unittest.TestLoader().loadTestsFromModule(TC03_HandleAlerts)
+tc4 = unittest.TestLoader().loadTestsFromModule(TC04_DownloadUploadCases)
 
 # Create test suites
-smokeTestSuite = unittest.TestSuite([tc1, tc2])
-regressionTestSuite = unittest.TestSuite([tc2])
-functionalTestSuite = unittest.TestSuite([tc1, tc2])
-integrationTestSuite = unittest.TestSuite([tc1, tc2])
+# smokeTestSuite = unittest.TestSuite([tc1, tc2])
+# regressionTestSuite = unittest.TestSuite([tc2])
+# functionalTestSuite = unittest.TestSuite([tc1, tc2])
+# integrationTestSuite = unittest.TestSuite([tc1, tc2])
 
-# smokeTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
-# regressionTestSuite = unittest.TestSuite([tc3])
-# functionalTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
-# integrationTestSuite = unittest.TestSuite([tc1, tc2, tc4])
+smokeTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
+regressionTestSuite = unittest.TestSuite([tc3])
+functionalTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
+integrationTestSuite = unittest.TestSuite([tc1, tc2, tc4])
 
 cu = commonUtilities()
 const = Constants()

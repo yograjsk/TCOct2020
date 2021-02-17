@@ -34,7 +34,8 @@ class TC01_AddLocation(unittest.TestCase):
         self.cu.sendKeysToElement(self.driver, (By.ID, "location_fax"), "123123123")
         self.cu.sendKeysToElement(self.driver, (By.ID, "location_notes"), "Sample Notes for location details")
         self.cu.clickElement(self.driver, self.OR.saveBtn)
-        self.driver.save_screenshot("evidences/AddLocation")
+        # self.driver.save_screenshot("evidences/AddLocation")
+        self.cu.takeScreenshot(self.driver, "AddLocation.png")
         self.assertTrue(self.driver.find_element(By.XPATH, "//table[@id='resultTable']//td/a[text()='"+location+"']"))
 
     @classmethod

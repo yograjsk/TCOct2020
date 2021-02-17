@@ -25,7 +25,8 @@ class TC02_DeleteLocation(unittest.TestCase):
         self.cu.clickElement(self.driver, (By.XPATH, "//table[@id='resultTable']//td/a[text()='"+location+"']/../..//input"))
         self.cu.clickElement(self.driver, (By.ID, "btnDelete"))
         self.cu.clickElement(self.driver, (By.ID, "dialogDeleteBtn"))
-        self.driver.save_screenshot("evidences/DeleteLocation")
+        self.cu.takeScreenshot(self.driver, "DeleteLocation.png")
+        # self.driver.save_screenshot("evidences/DeleteLocation")
         self.assertTrue(self.driver.find_element(By.ID, "btnDelete"))
 
     @classmethod
