@@ -57,7 +57,6 @@ class TC03_HandleAlerts(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-        # cls.logout.logout(cls.driver)
 
 
 if __name__ == '__main__':

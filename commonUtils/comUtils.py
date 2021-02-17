@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 
 class commonUtilities():
@@ -23,6 +24,12 @@ class commonUtilities():
 
     def sendKeysToElement(self, driver, locatorTuple, textToPass):
         driver.find_element(locatorTuple[0], locatorTuple[1]).send_keys(textToPass)
+
+    def selectDropdown(self, driver, locatorTuple, dropdownValue):
+        elementFound = driver.find_element(locatorTuple[0], locatorTuple[1]).is_displayed()
+        dropdown = Select(driver.find_element(locatorTuple[0], locatorTuple[1]))
+        # dropdown.select_by_value(dropdownValue)
+        dropdown.select_by_visible_text(dropdownValue)
 
     def sendKeysToElementByAction(self, driver, identifierTpl, textToPass):
         action = ActionChains(driver)

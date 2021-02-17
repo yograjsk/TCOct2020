@@ -12,17 +12,13 @@ class Login():
         OR = objRepo()
         const = Constants()
         properties = cu.readPropertyFile(const.propFilePath)
-        # properties = cu.readPropertyFile("config.properties")
-        # self.driver = cu.getDriver(properties['browser'])
         self.driver = cu.getDriver(properties)
         self.driver.implicitly_wait(10)
         self.driver.get("http://localhost:81/orangehrm/symfony/web/index.php/auth/login")
         print("verify login page is available", cu.checkElementPresent(self.driver, OR.username))
-        # self.cu.sendKeysToElement(self.driver, By.NAME, "txtUsername", "admin")
-        # self.cu.sendKeysToElement(self.driver, (By.NAME, "txtUsername"), "admin")
-        # self.cu.sendKeysToElement(self.driver, (self.OR.username), "admin")
         cu.sendKeysToElementByAction(self.driver, (OR.username), username)
         self.driver.find_element_by_name("txtPassword").send_keys(password)
         cu.clickElement(self.driver, (By.ID, "btnLogin"))
         assert cu.checkElementPresent(self.driver, OR.welcomePage.welcomeLogo) is True
         return self.driver
+
