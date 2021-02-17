@@ -20,14 +20,14 @@ class TC04_DownloadUploadCases(unittest.TestCase):
 
     def test_TC1_verifyDownload(self):
         self.cu.menuNav(self.driver, "PIM", "Configuration", "Data Import")
-        # self.driver.get("http://localhost:81/orangehrm/symfony/web/index.php/admin/pimCsvImport")
         self.driver.find_element(By.LINK_TEXT, "Download").click()
+        self.driver.save_screenshot("evidences/DownloadSuccessful")
 
     def test_TC2_verifyUpload(self):
         self.cu.menuNav(self.driver, "PIM", "Configuration", "Data Import")
-        # self.driver.get("http://localhost:81/orangehrm/symfony/web/index.php/admin/pimCsvImport")
         self.driver.find_element(By.ID, "pimCsvImport_csvFile").send_keys("C:/Users/USER/PycharmProjects/TCOct2020/backup/resources/importData.csv")
         self.driver.find_element(By.ID, "btnSave").click()
+        self.driver.save_screenshot("evidences/UploadSuccessful")
 
     @classmethod
     def tearDownClass(cls):
