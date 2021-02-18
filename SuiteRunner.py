@@ -14,12 +14,6 @@ tc2 = unittest.TestLoader().loadTestsFromModule(TC02_DeleteLocation)
 tc3 = unittest.TestLoader().loadTestsFromModule(TC03_HandleAlerts)
 tc4 = unittest.TestLoader().loadTestsFromModule(TC04_DownloadUploadCases)
 
-# Create test suites
-# smokeTestSuite = unittest.TestSuite([tc1, tc2])
-# regressionTestSuite = unittest.TestSuite([tc2])
-# functionalTestSuite = unittest.TestSuite([tc1, tc2])
-# integrationTestSuite = unittest.TestSuite([tc1, tc2])
-
 smokeTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
 regressionTestSuite = unittest.TestSuite([tc3])
 functionalTestSuite = unittest.TestSuite([tc1, tc2, tc3, tc4])
@@ -28,10 +22,8 @@ integrationTestSuite = unittest.TestSuite([tc1, tc2, tc4])
 cu = commonUtilities()
 const = Constants()
 properties = cu.readPropertyFile(const.propFilePath)
-# properties = cu.readPropertyFile("Selenium_code/config.properties")
 suiteName = properties['testSuite']
 print("Suite Name:", suiteName)
-# test_runner = HtmlTestRunner.HTMLTestRunner(output="Reports/HTMLReports", verbosity=2, report_name="SMOKE TEST REPORT", report_title=f"{suiteName} Test Report")
 
 if suiteName.lower() == "integration":
     unittest.TextTestRunner().run(integrationTestSuite)
